@@ -17,19 +17,31 @@ def menu():
 
 
 def select_station():
-  station=["秋葉原","山梨県","長野県"]
-  fares = [133, 4128, 7990]
-  print("乗車駅選択")
-  for i in range(len(station)):
-    print(f"{i+1}. {station[i]}から{fares[i]}円")
-  print("乗車した駅を入力してください(キャンセルする場合には99を入力)")
-  destination=int(input())
-  if destination==99:
-    print("駅の選択をキャンセルしました。")
-    return 0
-  elif destination==1:
-    print(f"乗車駅は{station[destination-1]}で料金は{fares[destination-1]}円です。")
-    return fares[destination-1]
+  print("[乗車駅選択]")
+  print("  1: 秋葉原駅から    133円 ")
+  print("  2: 山梨駅から    4128円 ")
+  print("  3: 長野駅から    7990円 ")
+  try:
+    station = int(input("乗車駅を選択してください(キャンセルする場合には99を入力): "))
+  except ValueError:
+    print("数字を入力してください。")
+    return select_station()
+  else:
+    if station == 1:
+      print("乗車駅は秋葉原で運賃は133円です。")
+      return 133
+    elif station == 2:
+      print("乗車駅は山梨で運賃は4128円です。")
+      return 4128
+    elif station == 3:
+      print("乗車駅は長野で運賃は7990円です。")
+      return 7990
+    elif station == 99:
+      print("駅の選択をキャンセルしました。")
+      return 0
+    elif station < 1 or station > 3:
+      print("正しい数値を入力してください。")
+      return select_station()
 
 
 def pay(zandaka, fare):
@@ -43,13 +55,14 @@ def pay(zandaka, fare):
       else:
         break
   zandaka -= fare
+  print(f"精算後のチャージ残高は{zandaka}円です")
   while True:
     if zandaka < 500:
       print("残高が500円未満のため3000円自動チャージします。")
       zandaka+=3000
     else:
+      print(f"チャージ残高は{zandaka}円です")
       break
-  print(f"清算後のチャージ残高は{zandaka}円です")
   return zandaka
 
 
@@ -75,42 +88,52 @@ def charge(zandaka):
     if num == 1:
       zandaka += 1000
       print("1000円チャージしました。")
+      print(f"チャージ残高は{zandaka}円です")
       return zandaka
     elif num == 2:
       zandaka += 2000
       print("2000円チャージしました。")
+      print(f"チャージ残高は{zandaka}円です") 
       return zandaka
     elif num == 3:
       zandaka += 3000
       print("3000円チャージしました。")
+      print(f"チャージ残高は{zandaka}円です")
       return zandaka
     elif num == 4:
       zandaka += 4000
       print("4000円チャージしました。")
+      print(f"チャージ残高は{zandaka}円です")
       return zandaka
     elif num == 5:
       zandaka += 5000
       print("5000円チャージしました。")
+      print(f"チャージ残高は{zandaka}円です")
       return zandaka
     elif num == 6:
       zandaka += 6000
       print("6000円チャージしました。")
+      print(f"チャージ残高は{zandaka}円です")
       return zandaka
     elif num == 7:
       zandaka += 7000
       print("7000円チャージしました。")
+      print(f"チャージ残高は{zandaka}円です")
       return zandaka
     elif num == 8:
       zandaka += 8000
       print("8000円チャージしました。")
+      print(f"チャージ残高は{zandaka}円です")
       return zandaka
     elif num == 9:
       zandaka += 9000
       print("9000円チャージしました。")
+      print(f"チャージ残高は{zandaka}円です")
       return zandaka
     elif num == 10:
       zandaka += 10000
       print("10000円チャージしました。")
+      print(f"チャージ残高は{zandaka}円です")
       return zandaka
     elif num == 99:
       print("チャージをキャンセルしました。")
