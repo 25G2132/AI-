@@ -122,10 +122,20 @@ def charge(zandaka):
 
 def main():
   zandaka = 500
-  #while True:
+  while True:
+    choice = menu()
+    if choice == 1:
+      fare = select_station()
+      if fare != 0:
+        zandaka = pay(zandaka, fare)
+    elif choice == 2:
+      zandaka = charge(zandaka)
+    elif choice == 99:
+      print("システムを終了します。")
+      break
   #ここに処理の中身を書く。()カッコ内の引数はある場合は書く。
   #pass #このpassは処理を書いた後消してよい。
 
 
 if __name__ == "__main__":
-    print("戻り値:", charge(500)) 
+  main()
