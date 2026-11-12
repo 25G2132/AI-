@@ -13,8 +13,7 @@ def menu():
       elif choice < 1 or choice > 2:
         print("正しい数値を入力してください。")
         return menu()
-    return menu()  # 再度メニューを表示するためにmenu()を呼び出す
-
+    return menu()  
 
 def select_station():
   print("[乗車駅選択]")
@@ -156,8 +155,6 @@ def main():
     elif choice == 99:
       print("システムを終了します。")
       break
-  #ここに処理の中身を書く。()カッコ内の引数はある場合は書く。
-  #pass #このpassは処理を書いた後消してよい。
 
 
 if __name__ == "__main__":
